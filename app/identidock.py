@@ -10,8 +10,8 @@ default_name = 'Input name'
 @app.route('/', methods=['GET', 'POST'])
 def mainpage():
     name = default_name
-    if request.method == 'POST':
-        name = request.form['name']
+    if requests.method == 'POST':
+        name = requests.form['name']
         salted_name = salt + name
         name_hash = hashlib.sha256(salted_name.encode()).hexdigest()
 
