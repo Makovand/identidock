@@ -10,7 +10,7 @@ def mainpage():
     name = default_name
 
     header = '<html><head><title>Identidock</title></head></html>'
-    body = '''<form method="POST"
+    body = '''<form method="POST">
             Hello <input type="text" name="name" value="{}">
             <input type="submit" value="submit">
             </form>
