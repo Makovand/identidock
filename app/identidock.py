@@ -18,11 +18,11 @@ def mainpage():
 
     header = '<html><head><title>Identidock</title></head></html>'
     body = '''<form method="POST">
-            Hello <input type="text" name="name" value="{}">
+            Hello <input type="text" name="name" value="{0}">
             <input type="submit" value="submit">
             </form>
             <p>You look like a:
-            <img src="/monster/monster.png"/>
+            <img src="/monster/{1}"/>
             '''.format(name, name_hash)
     footer = '</body></html>'
 
