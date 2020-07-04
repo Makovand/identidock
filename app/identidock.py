@@ -1,13 +1,19 @@
 from flask import Flask, Response
 import requests
+import hashlib
 
 app = Flask(__name__)
+salt = "UNIQUE_SALT"
 default_name = 'Input name'
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def mainpage():
     name = default_name
+    if request.method == 'POST':
+        name = request.form['name']
+        salted_name = salt + name
+        name_hash = hashlib.sha256(salted_name.encode()).hexdigest()
 
     header = '<html><head><title>Identidock</title></head></html>'
     body = '''<form method="POST">
@@ -16,7 +22,7 @@ def mainpage():
             </form>
             <p>You look like a:
             <img src="/monster/monster.png"/>
-            '''.format(name)
+            '''.format(name, name_hash)
     footer = '</body></html>'
 
     return header + body + footer
