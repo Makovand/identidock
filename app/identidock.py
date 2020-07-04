@@ -12,20 +12,20 @@ def mainpage():
     name = default_name
     if request.method == 'POST':
         name = request.form['name']
-    salted_name = salt + name
-    name_hash = hashlib.sha256(salted_name.encode()).hexdigest()
+        salted_name = salt + name
+        name_hash = hashlib.sha256(salted_name.encode()).hexdigest()
 
-    header = '<html><head><title>Identidock</title></head></html>'
-    body = '''<form method="POST">
+        header = '<html><head><title>Identidock</title></head></html>'
+        body = '''<form method="POST">
             Hello <input type="text" name="name" value="{}">
             <input type="submit" value="submit">
             </form>
             <p>You look like a:
             <img src="/monster/monster.png"/>
             '''.format(name, name_hash)
-    footer = '</body></html>'
+        footer = '</body></html>'
 
-    return header + body + footer
+        return header + body + footer
 
 
 @app.route('/monster/<name>')
