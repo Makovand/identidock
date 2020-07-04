@@ -11,9 +11,9 @@ default_name = 'Input name'
 def mainpage():
     name = default_name
     if request.method == 'POST':
-        name = request.form['name']
-        salted_name = salt + name
-        name_hash = hashlib.sha256(salted_name.encode()).hexdigest()
+    name = request.form['name']
+    salted_name = salt + name
+    name_hash = hashlib.sha256(salted_name.encode()).hexdigest()
 
     header = '<html><head><title>Identidock</title></head></html>'
     body = '''<form method="POST">
