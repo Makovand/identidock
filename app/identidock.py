@@ -18,7 +18,7 @@ def mainpage():
             '''.format(name)
     footer = '</body></html>'
 
-    return header + body + footer\
+    return header + body + footer
     @app.route('/monster/<name>')
 
 def get_identicon(name):
