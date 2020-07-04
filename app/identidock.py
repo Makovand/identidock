@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, request
 import requests
 import hashlib
 
@@ -10,8 +10,8 @@ default_name = 'Input name'
 @app.route('/', methods=['GET', 'POST'])
 def mainpage():
     name = default_name
-    if requests.method == 'POST':
-        name = requests.form['name']
+    if request.method == 'POST':
+        name = request.form['name']
         salted_name = salt + name
         name_hash = hashlib.sha256(salted_name.encode()).hexdigest()
 
